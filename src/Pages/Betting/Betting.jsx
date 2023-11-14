@@ -8,7 +8,7 @@ export default function Betting() {
           <div className="flex justify-center items-center">
             <div className="w-4/12">
               <img
-                className="lg:w-40 w-20 lg:h-60 h-20 block m-auto"
+                className="lg:w-40 w-20 lg:h-50 h-20 block m-auto"
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRupAZSlEcehQSIxhIWiwVLwkkfokFmutoTqbX-Hmxxev2H25uTGbvM-06PacyaCmrmFHA&usqp=CAU"
                 alt=""
               />
@@ -20,7 +20,7 @@ export default function Betting() {
             </div>
             <div className="w-4/12">
               <img
-                className="lg:w-40 w-20 lg:h-60 h-20 block m-auto"
+                className="lg:w-40 w-20 lg:h-50 h-20 block m-auto"
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStE8Nxq4ula9yfuY_qQAuksgN2jPrjj5xRZbrLHZpaGxlkToP_5525JKdH9KeGHM1CllM&usqp=CAU"
                 alt=""
               />
