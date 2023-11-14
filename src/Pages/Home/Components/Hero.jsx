@@ -1,7 +1,9 @@
+import BattingBox from "../../../Components/Box/BattingBox";
+
 export default function Hero() {
   return (
     <>
-      <div className="p-10">
+      <div className="lg:p-10 py-5">
         <div className="lg:mx-10 backdrop-blur-md border border-white rounded-2xl p-5">
           <div className="flex justify-center items-center">
             <div className="w-4/12">
@@ -25,6 +27,7 @@ export default function Hero() {
             </div>
           </div>
         </div>
+        <BattingBox />
       </div>
     </>
   );
