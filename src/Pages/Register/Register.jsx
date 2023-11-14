@@ -44,7 +44,7 @@ export default function Register() {
             placeholder="Password"
           />
           <button className="block w-6/12 m-auto p-2 px-4 shadow-2xl rounded-full text-xl font-bold text-black bg-white my-5">
-            Login
+            Register
           </button>
         </form>
         <div className="block text-center">

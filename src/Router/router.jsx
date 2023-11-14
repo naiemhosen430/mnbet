@@ -3,12 +3,12 @@ import Home from "../Pages/Home/Home";
 import Betting from "../Pages/Betting/Betting";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
-import Main from "../Layout/main";
+import Layout from "../Layout/Layout";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <Main />,
+    element: <Layout />,
     children: [
       {
         element: <Home />,
