@@ -1,3 +1,5 @@
+import BattingBox from "../../Components/Box/BattingBox";
+
 export default function Betting() {
   return (
     <>
@@ -26,6 +28,7 @@ export default function Betting() {
           </div>
         </div>
       </div>
+      <BattingBox />
     </>
   );
 }
