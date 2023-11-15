@@ -116,10 +116,10 @@ export default function Menu() {
 
             <Link
               className="py-2 px-4 rounded-md hover:bg-slate-500 text-slate-700 font-bold block"
-              to={"/"}
+              to={"/dashboad"}
               onClick={toggleMenuBox}
             >
-              Portfolio
+              Dashboad
             </Link>
 
             <Link
