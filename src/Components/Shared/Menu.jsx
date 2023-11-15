@@ -40,9 +40,9 @@ export default function Menu() {
 
           <Link
             className="py-2 px-4 text-center rounded-md hover:bg-slate-500 text-slate-700 font-bold block"
-            to={"/"}
+            to={"/Dashboad"}
           >
-            Portfolio
+            Dashboad
           </Link>
 
           <Link
@@ -116,7 +116,7 @@ export default function Menu() {
 
             <Link
               className="py-2 px-4 rounded-md hover:bg-slate-500 text-slate-700 font-bold block"
-              to={"/dashboad"}
+              to={"/Dashboad"}
               onClick={toggleMenuBox}
             >
               Dashboad
