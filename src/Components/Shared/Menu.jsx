@@ -3,8 +3,11 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { MdReorder } from "react-icons/md";
 import { Link } from "react-router-dom";
+import { useUserAuth } from "../../Context/UseAuthContext";
 
 export default function Menu() {
+  console.log({ useUserAuth });
+  const { user } = useUserAuth();
   const [menuBox, setMenuBox] = useState(false);
   useEffect(() => {
     AOS.init();
@@ -18,6 +21,11 @@ export default function Menu() {
       setMenuBox(true);
     }
   };
+
+  const signOutHundler = () => {
+    console.log("data");
+  };
+
   return (
     <>
       <div className="flex sticky top-0 backdrop-blur-md z-20 justify-center items-center py-2 px-4">
@@ -93,6 +101,14 @@ export default function Menu() {
           >
             Login
           </Link>
+        </div>
+        <div
+          onClick={signOutHundler()}
+          className="lg:w-3/12 w-4/12 space-x-4 lg:flex mx-4 text-center"
+        >
+          <button className="py-2 hidden px-4 lg:block w-6/12 rounded-md shadow-md hover:bg-slate-700 bg-slate-800 text-white font-bold">
+            Logout
+          </button>
         </div>
 
         <div

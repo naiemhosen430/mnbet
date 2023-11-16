@@ -1,6 +1,28 @@
 import { Link } from "react-router-dom";
+import { gooogleSignUpHundler } from "../../api/firebase";
+import { useUserAuth } from "../../Context/UseAuthContext";
+import { useState } from "react";
 
 export default function Register() {
+  const [UserInfo, setUserInfo] = useState({
+    email: "",
+    password: "",
+  });
+  const { signUp } = useUserAuth();
+
+  // signup
+  const sughnupHundler = async () => {
+    try {
+      const data = await signUp(UserInfo.email, UserInfo.password);
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const signupWithGoodleHundler = () => {
+    const data = gooogleSignUpHundler();
+    console.log({ data });
+  };
   return (
     <>
       <section className="backdrop-blur-md lg:w-6/12 m-auto p-5 rounded-sm h-screen">
@@ -27,8 +49,15 @@ export default function Register() {
           <input
             className="bg-slate-900 rounded-3xl text-sm py-2 px-4 d my-2 block w-full"
             id="email"
+            name="email"
             type="email"
             placeholder="email"
+            onChange={(event) => {
+              setUserInfo({
+                ...UserInfo,
+                [event.target.name]: event.target.value,
+              });
+            }}
           />
 
           <label
@@ -41,15 +70,31 @@ export default function Register() {
             className="bg-slate-900 rounded-3xl text-sm py-2 px-4 d my-2 block w-full"
             id="password"
             type="password"
+            name="password"
             placeholder="Password"
+            onChange={(event) => {
+              setUserInfo({
+                ...UserInfo,
+                [event.target.name]: event.target.value,
+              });
+            }}
           />
-          <button className="block w-6/12 m-auto p-2 px-4 shadow-2xl rounded-full text-xl font-bold text-black bg-white my-5">
+          <button
+            onClick={sughnupHundler}
+            className="block w-6/12 m-auto p-2 px-4 shadow-2xl rounded-full text-xl font-bold text-black bg-white my-5"
+          >
             Register
           </button>
         </form>
         <div className="block text-center">
           <h1>OR</h1>
         </div>
+        <button
+          onClick={signupWithGoodleHundler}
+          className="block w-6/12 m-auto p-2 px-4 shadow-2xl rounded-full text-xl font-bold text-black bg-white my-5"
+        >
+          Sign in wtith Google
+        </button>
         <div className="block text-center text-xl p-4 text-slate-900">
           <h1>
             Have account?{" "}

@@ -4,6 +4,10 @@ import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import Layout from "../Layout/Layout";
 import Home from "../Pages/Home/Home";
+import Dashboad from "../Pages/Dashboad/Dashboad";
+import DashboadLayout from "../Pages/Dashboad/Layout/DashboadLayout";
+import ProtectedRoutes from "../Components/ProtectedRoutes";
+import LogoutToutes from "../Components/LogoutToutes";
 
 export const router = createBrowserRouter([
   {
@@ -20,11 +24,33 @@ export const router = createBrowserRouter([
       },
       {
         path: "login",
-        element: <Login />,
+        element: (
+          <LogoutToutes>
+            <Login />
+          </LogoutToutes>
+        ),
       },
       {
         path: "register",
-        element: <Register />,
+        element: (
+          <LogoutToutes>
+            <Register />
+          </LogoutToutes>
+        ),
+      },
+      {
+        path: "dashboad/",
+        element: (
+          <ProtectedRoutes>
+            <DashboadLayout />
+          </ProtectedRoutes>
+        ),
+        children: [
+          {
+            path: "",
+            element: <Dashboad />,
+          },
+        ],
       },
     ],
   },
