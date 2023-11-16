@@ -2,12 +2,22 @@ import { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { MdReorder } from "react-icons/md";
-import { Link } from "react-router-dom";
-import { useUserAuth } from "../../Context/UseAuthContext";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Menu() {
-  console.log({ useUserAuth });
-  const { user } = useUserAuth();
+  const [showLogres, setshowLogres] = useState(false);
+  const [sshowlogout, setshowlogout] = useState(false);
+  const accessinfo = localStorage.getItem("accesstoken");
+  useEffect(() => {
+    if (!accessinfo) {
+      setshowLogres(true);
+      setshowlogout(false);
+    } else {
+      setshowlogout(true);
+      setshowLogres(false);
+    }
+  }, [accessinfo]);
+
   const [menuBox, setMenuBox] = useState(false);
   useEffect(() => {
     AOS.init();
@@ -23,7 +33,9 @@ export default function Menu() {
   };
 
   const signOutHundler = () => {
-    console.log("data");
+    const navigate = useNavigate();
+    localStorage.clear();
+    navigate("/register");
   };
 
   return (
@@ -83,32 +95,32 @@ export default function Menu() {
         </div>
 
         <div className="lg:w-3/12 w-4/12 space-x-4 lg:flex mx-4 text-center">
-          <Link
-            className="py-2 hidden px-4 lg:block w-6/12 rounded-md shadow-md hover:bg-slate-700 bg-slate-800 text-white font-bold"
-            to={"/login"}
-          >
-            Login
-          </Link>
-          <Link
-            className="py-2 hidden px-4 lg:block w-6/12 rounded-md shadow-md hover:bg-slate-700 bg-slate-700 text-white font-bold"
-            to={"/register"}
-          >
-            Register
-          </Link>
-          <Link
-            className="py-2 block px-4 lg:hidden w-full rounded-md shadow-md hover:bg-slate-700 bg-slate-800 text-white font-bold"
-            to={"/login"}
-          >
-            Login
-          </Link>
-        </div>
-        <div
-          onClick={signOutHundler()}
-          className="lg:w-3/12 w-4/12 space-x-4 lg:flex mx-4 text-center"
-        >
-          <button className="py-2 hidden px-4 lg:block w-6/12 rounded-md shadow-md hover:bg-slate-700 bg-slate-800 text-white font-bold">
-            Logout
-          </button>
+          {showLogres && (
+            <>
+              <Link
+                className="py-2 hidden px-4 lg:block w-6/12 rounded-md shadow-md hover:bg-slate-700 bg-slate-800 text-white font-bold"
+                to={"/login"}
+              >
+                Login
+              </Link>
+              <Link
+                className="py-2 hidden px-4 lg:block w-6/12 rounded-md shadow-md hover:bg-slate-700 bg-slate-700 text-white font-bold"
+                to={"/register"}
+              >
+                Register
+              </Link>
+            </>
+          )}
+          {sshowlogout && (
+            <div className="lg:w-3/12 w-4/12 space-x-4 lg:flex mx-4 text-center">
+              <button
+                onClick={signOutHundler}
+                className="py-2 hidden px-4 lg:block w-6/12 rounded-md shadow-md hover:bg-slate-700 bg-slate-800 text-white font-bold"
+              >
+                Logout
+              </button>
+            </div>
+          )}
         </div>
 
         <div
@@ -172,20 +184,34 @@ export default function Menu() {
           </div>
 
           <div className="space-x-4 my-20 lg:flex mx-4 text-center">
-            <Link
-              onClick={toggleMenuBox}
-              className="py-2 px-4 lg:block w-6/12 rounded-md shadow-md hover:bg-slate-700 bg-slate-500 text-white font-bold"
-              to={"/login"}
-            >
-              Login
-            </Link>
-            <Link
-              onClick={toggleMenuBox}
-              className="py-2 px-4 lg:block w-6/12 rounded-md shadow-md hover:bg-slate-700 bg-slate-800 text-white font-bold"
-              to={"/register"}
-            >
-              Register
-            </Link>
+            {showLogres && (
+              <>
+                <Link
+                  onClick={toggleMenuBox}
+                  className="py-2 px-4 lg:block w-6/12 rounded-md shadow-md hover:bg-slate-700 bg-slate-500 text-white font-bold"
+                  to={"/login"}
+                >
+                  Login
+                </Link>
+                <Link
+                  onClick={toggleMenuBox}
+                  className="py-2 px-4 lg:block w-6/12 rounded-md shadow-md hover:bg-slate-700 bg-slate-800 text-white font-bold"
+                  to={"/register"}
+                >
+                  Register
+                </Link>
+              </>
+            )}
+            {sshowlogout && (
+              <div className="lg:w-3/12 w-12/12 space-x-4 lg:flex mx-4 text-center">
+                <button
+                  onClick={signOutHundler}
+                  className="py-2 px-4 lg:block w-6/12 rounded-md shadow-md hover:bg-slate-700 bg-slate-800 text-white font-bold"
+                >
+                  Logout
+                </button>
+              </div>
+            )}
           </div>
         </div>
       )}

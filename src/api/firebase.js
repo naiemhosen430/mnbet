@@ -21,8 +21,8 @@ export const gooogleSignUpHundler = () => {
   const provider = new GoogleAuthProvider();
   signInWithPopup(auth, provider)
     .then((data) => {
-      localStorage.setItem("user", data.user);
-      console.log(data);
+      localStorage.setItem("accesstoken", data.user.accessToken);
+      localStorage.setItem("userid", data.user.uid);
     })
     .catch((error) => {
       console.log(error);
