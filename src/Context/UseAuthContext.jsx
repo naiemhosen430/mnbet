@@ -3,6 +3,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   onAuthStateChanged,
+  signOut,
 } from "firebase/auth";
 import { auth } from "../api/firebase";
 
@@ -29,7 +30,7 @@ export function UserAuthContextProvider({ children }) {
   }, []);
 
   return (
-    <userAuthContext.Provider value={{ user, signUp, login }}>
+    <userAuthContext.Provider value={{ user, signUp, login, signOut }}>
       {children}
     </userAuthContext.Provider>
   );

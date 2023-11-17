@@ -4,6 +4,8 @@ import "aos/dist/aos.css";
 import { MdReorder } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { useUserAuth } from "../../Context/UseAuthContext";
+import { signOut } from "firebase/auth";
+import { auth } from "../../api/firebase";
 
 export default function Menu() {
   const { user } = useUserAuth();
@@ -26,13 +28,15 @@ export default function Menu() {
   }, [accessinfo]);
 
   useEffect(() => {
-    setMyInfo((prevData) => {
-      return {
-        ...prevData,
-        name: user.displayName,
-        image: user.photoURL,
-      };
-    });
+    if (user) {
+      setMyInfo((prevData) => {
+        return {
+          ...prevData,
+          name: user.displayName,
+          image: user.photoURL,
+        };
+      });
+    }
   }, [user]);
 
   const [menuBox, setMenuBox] = useState(false);
@@ -50,6 +54,7 @@ export default function Menu() {
   };
 
   const signOutHundler = () => {
+    signOut(auth);
     localStorage.clear();
   };
 
@@ -161,19 +166,23 @@ export default function Menu() {
 
       {menuBox && (
         <div className="h-screen backdrop-blur-md" data-aos="fade-right">
-          <div className="w-12/12 space-x-4">
-            <div className="p-2 flex items-center justify-center space-x-4">
-              <div className="text-center">
-                <h1 className="text-2xl p-2 font-bold text-white">0.0 taka</h1>
+          {sshowlogout && (
+            <div className="w-12/12 space-x-4">
+              <div className="p-2 flex items-center justify-center space-x-4">
+                <div className="text-center">
+                  <h1 className="text-2xl p-2 font-bold text-white">
+                    0.0 taka
+                  </h1>
+                </div>
+                <h1 className="text-xl font-bold text-white">{myInfo.name}</h1>
+                <img
+                  className="w-8 h-8 rounded-full inline-block"
+                  src={`${myInfo.image}`}
+                  alt=""
+                />
               </div>
-              <h1 className="text-xl font-bold text-white">{myInfo.name}</h1>
-              <img
-                className="w-8 h-8 rounded-full inline-block"
-                src={`${myInfo.image}`}
-                alt=""
-              />
             </div>
-          </div>
+          )}
 
           <div className="shadow-md rounded-md">
             <Link
