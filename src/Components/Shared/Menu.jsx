@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { MdReorder } from "react-icons/md";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function Menu() {
   const [showLogres, setshowLogres] = useState(false);
@@ -33,9 +33,12 @@ export default function Menu() {
   };
 
   const signOutHundler = () => {
-    const navigate = useNavigate();
     localStorage.clear();
-    navigate("/register");
+  };
+
+  const handleLogoutAndToggle = () => {
+    signOutHundler();
+    toggleMenuBox();
   };
 
   return (
@@ -188,13 +191,6 @@ export default function Menu() {
               <>
                 <Link
                   onClick={toggleMenuBox}
-                  className="py-2 px-4 lg:block w-6/12 rounded-md shadow-md hover:bg-slate-700 bg-slate-500 text-white font-bold"
-                  to={"/login"}
-                >
-                  Login
-                </Link>
-                <Link
-                  onClick={toggleMenuBox}
                   className="py-2 px-4 lg:block w-6/12 rounded-md shadow-md hover:bg-slate-700 bg-slate-800 text-white font-bold"
                   to={"/register"}
                 >
@@ -204,12 +200,13 @@ export default function Menu() {
             )}
             {sshowlogout && (
               <div className="lg:w-3/12 w-12/12 space-x-4 lg:flex mx-4 text-center">
-                <button
-                  onClick={signOutHundler}
+                <Link
+                  onClick={handleLogoutAndToggle}
+                  to={"/register"}
                   className="py-2 px-4 lg:block w-6/12 rounded-md shadow-md hover:bg-slate-700 bg-slate-800 text-white font-bold"
                 >
                   Logout
-                </button>
+                </Link>
               </div>
             )}
           </div>
