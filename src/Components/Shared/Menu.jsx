@@ -3,9 +3,16 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { MdReorder } from "react-icons/md";
 import { Link } from "react-router-dom";
+import { useUserAuth } from "../../Context/UseAuthContext";
 
 export default function Menu() {
+  const { user } = useUserAuth();
   const [showLogres, setshowLogres] = useState(false);
+  const [myInfo, setMyInfo] = useState({
+    name: "no name",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGQUKnJyenabp9WJBm3UmgQGPdYrPDgCdQ3HYHH0VQZ1J6Pcd00N2AySxJfxitS7SL8nU&usqp=CAU",
+  });
   const [sshowlogout, setshowlogout] = useState(false);
   const accessinfo = localStorage.getItem("accesstoken");
   useEffect(() => {
@@ -17,6 +24,16 @@ export default function Menu() {
       setshowLogres(false);
     }
   }, [accessinfo]);
+
+  useEffect(() => {
+    setMyInfo((prevData) => {
+      return {
+        ...prevData,
+        name: user.displayName,
+        image: user.photoURL,
+      };
+    });
+  }, [user]);
 
   const [menuBox, setMenuBox] = useState(false);
   useEffect(() => {
@@ -97,7 +114,7 @@ export default function Menu() {
           </Link>
         </div>
 
-        <div className="lg:w-3/12 w-4/12 space-x-4 lg:flex mx-4 text-center">
+        <div className="lg:w-3/12 w-4/12 lg:flex justify-end text-center">
           {showLogres && (
             <>
               <Link
@@ -115,13 +132,21 @@ export default function Menu() {
             </>
           )}
           {sshowlogout && (
-            <div className="lg:w-3/12 w-4/12 space-x-4 lg:flex mx-4 text-center">
+            <div className="lg:w-12/12 hidden space-x-4 lg:flex text-center">
               <button
-                onClick={signOutHundler}
-                className="py-2 hidden px-4 lg:block w-6/12 rounded-md shadow-md hover:bg-slate-700 bg-slate-800 text-white font-bold"
+                onClick={handleLogoutAndToggle}
+                className="py-2 hidden px-4 lg:block rounded-md shadow-md hover:bg-slate-700 bg-slate-800 text-white font-bold"
               >
                 Logout
               </button>
+              <div className="p-2 flex items-center space-x-4">
+                <h1 className="text-xl font-bold text-white">{myInfo.name}</h1>
+                <img
+                  className="w-10 h-10 rounded-full inline-block"
+                  src={myInfo.image}
+                  alt=""
+                />
+              </div>
             </div>
           )}
         </div>
@@ -136,6 +161,20 @@ export default function Menu() {
 
       {menuBox && (
         <div className="h-screen backdrop-blur-md" data-aos="fade-right">
+          <div className="w-12/12 space-x-4">
+            <div className="p-2 flex items-center justify-center space-x-4">
+              <div className="text-center">
+                <h1 className="text-2xl p-2 font-bold text-white">0.0 taka</h1>
+              </div>
+              <h1 className="text-xl font-bold text-white">{myInfo.name}</h1>
+              <img
+                className="w-8 h-8 rounded-full inline-block"
+                src={`${myInfo.image}`}
+                alt=""
+              />
+            </div>
+          </div>
+
           <div className="shadow-md rounded-md">
             <Link
               className="py-2 px-4 rounded-md hover:bg-slate-500 text-slate-700 font-bold block"
