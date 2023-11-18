@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import BattingBox from "../../../Components/Box/BattingBox";
 
 export default function Hero() {
   return (
@@ -36,7 +35,6 @@ export default function Hero() {
             Make your chalange
           </Link>
         </div>
-        <BattingBox />
       </div>
     </>
   );
