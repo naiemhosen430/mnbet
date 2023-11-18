@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
-import { getDatabase, ref, set } from "firebase/database";
+import { getDatabase, onValue, ref, set } from "firebase/database";
 import { createUser } from "./firebaseaction/createUser";
 
 const firebaseConfig = {
@@ -27,27 +27,43 @@ export const gooogleSignUpHundler = () => {
     .then((data) => {
       localStorage.setItem("accesstoken", data.user.accessToken);
       localStorage.setItem("userid", data.user.uid);
-      localStorage.setItem("role", data.user.role);
-      const user = {
-        name: data.user.displayName,
-        _id: data.user.uid,
-        balance: 0.0,
-        lost: 0.0,
-        todaylost: 0.0,
-        win: 0.0,
-        todaywin: 0.0,
-        role: "user",
-        profilepic: data.user.photoURL,
-        playedgame: ["placeholder"],
-        playinggame: ["placeholder"],
-        withdrawed: ["placeholder"],
-        withdrawpending: ["placeholder"],
-        deposited: ["placeholder"],
-        depositpending: ["placeholder"],
-        withdrawphones: ["placeholder"],
-      };
+      const userCollectionRef = ref(
+        dbbase,
+        `users/` + data.user.uid,
+        "/distance"
+      );
 
-      createUser(user);
+      onValue(userCollectionRef, (snapshot) => {
+        const mydata = snapshot.val();
+
+        if (!mydata) {
+          const user = {
+            name: data.user.displayName,
+            _id: data.user.uid,
+            balance: 0.0,
+            lost: 0.0,
+            todaylost: 0.0,
+            win: 0.0,
+            todaywin: 0.0,
+            role: "user",
+            profilepic: data.user.photoURL,
+            email: data.user.email,
+            playedgame: ["placeholder"],
+            playinggame: ["placeholder"],
+            withdrawed: ["placeholder"],
+            withdrawpending: ["placeholder"],
+            deposited: ["placeholder"],
+            depositpending: ["placeholder"],
+            withdrawphones: ["placeholder"],
+            mygames: ["placeholder"],
+          };
+
+          createUser(user);
+        } else {
+        }
+      });
+
+      // if ()
     })
     .catch((error) => {
       console.log(error);

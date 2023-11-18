@@ -15,6 +15,8 @@ import AdminProtectedRoute from "../Components/AdminProtectedRoute";
 import DashboadLayoutAdmin from "../Pages/AdminDashboad/Layout/DashboadLayoutAdmin";
 import AdminDashboad from "../Pages/AdminDashboad/AdminDashboad";
 import UserProtectedRoute from "../Components/UserProtectedRoute";
+import AdminDiposit from "../Pages/AdminDashboad/Pages/AdminDiposit";
+import AdminWithdraw from "../Pages/AdminDashboad/Pages/AdminWithdraw";
 
 export const router = createBrowserRouter([
   {
@@ -89,11 +91,11 @@ export const router = createBrowserRouter([
           },
           {
             path: "withdraw",
-            element: <Withdraw />,
+            element: <AdminWithdraw />,
           },
           {
             path: "diposit",
-            element: <Diposit />,
+            element: <AdminDiposit />,
           },
           {
             path: "support",

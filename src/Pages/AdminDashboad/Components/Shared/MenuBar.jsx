@@ -52,43 +52,37 @@ export default function MenuBar() {
           <h1 className="text-2xl p-2 font-bold text-white">
             {myInfo.balance}
           </h1>
-          <h1 className="text-sm text-slate-400">Your Balance</h1>
-          <Link
-            className="text-sm block mt-2 p-1 px-4 rounded-2xl bg-slate-600 text-white w-4/12 m-auto"
-            to={"/dashboad/diposit"}
-          >
-            Add
-          </Link>
+          <h1 className="text-sm text-slate-400">Our Balance</h1>
         </div>
         <Link
           className="block p-2 rounded-xl border-b-2 border-yellow-900 hover:bg-gray-900 text-white text-xl font-bold"
-          to={"/dashboad"}
+          to={"/admindashboad"}
         >
           Dashboad
         </Link>
         <Link
           className="block p-2 rounded-xl border-b-2 border-yellow-900 hover:bg-gray-900 text-white text-xl font-bold"
-          to={"/dashboad/editprofile"}
+          to={"/admindashboad/editprofile"}
         >
           Edit Profile Info
         </Link>
         <Link
           className="block p-2 rounded-xl border-b-2 border-yellow-900 hover:bg-gray-900 text-white text-xl font-bold"
-          to={"/dashboad/withdraw"}
+          to={"/admindashboad/withdraw"}
         >
-          Withdraw
+          Manage Withdraw
         </Link>
         <Link
           className="block p-2 rounded-xl border-b-2 border-yellow-900 hover:bg-gray-900 text-white text-xl font-bold"
-          to={"/dashboad/diposit"}
+          to={"/admindashboad/diposit"}
         >
-          Diposit
+          Manage Diposit
         </Link>
         <Link
           className="block p-2 rounded-xl border-b-2 border-yellow-900 hover:bg-gray-900 text-white text-xl font-bold"
-          to={"/dashboad/support"}
+          to={"/admindashboad/support"}
         >
-          Support
+          Manage Support
         </Link>
       </div>
     </>

@@ -60,6 +60,8 @@ export default function Menu() {
         try {
           const data = await getMe(user.uid);
           if (data) {
+            localStorage.setItem("role", data.role);
+            console.log(data.role);
             setMyInfo((prevData) => {
               return {
                 ...prevData,
