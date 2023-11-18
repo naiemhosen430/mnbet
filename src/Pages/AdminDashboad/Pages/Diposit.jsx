@@ -56,7 +56,7 @@ export default function Diposit() {
               Write your accout number
             </label>
             <input
-              className="block p-2 px-4 bg-black rounded-md text-lg w-full text-white"
+              className="block p-2 px-4 bg-black rounded-md text-lg w-full"
               type="text"
               id="number"
               placeholder="01xxxxxxxxx"
@@ -67,7 +67,7 @@ export default function Diposit() {
               Write your transaction id
             </label>
             <input
-              className="block p-2 px-4 bg-black rounded-md text-lg w-full text-white"
+              className="block p-2 px-4 bg-black rounded-md text-lg w-full"
               type="text"
               id="number"
               placeholder="jhdccjsdDCdc45"

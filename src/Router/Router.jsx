@@ -11,6 +11,9 @@ import EditProfile from "../Pages/Dashboad/Pages/EditProfile";
 import Withdraw from "../Pages/Dashboad/Pages/Withdraw";
 import Diposit from "../Pages/Dashboad/Pages/Diposit";
 import Support from "../Pages/Dashboad/Pages/Support";
+import AdminProtectedRoute from "../Components/AdminProtectedRoute";
+import DashboadLayoutAdmin from "../Pages/AdminDashboad/Layout/DashboadLayoutAdmin";
+import AdminDashboad from "../Pages/AdminDashboad/AdminDashboad";
 
 export const router = createBrowserRouter([
   {
@@ -44,6 +47,36 @@ export const router = createBrowserRouter([
           {
             path: "",
             element: <Dashboad />,
+          },
+          {
+            path: "editprofile",
+            element: <EditProfile />,
+          },
+          {
+            path: "withdraw",
+            element: <Withdraw />,
+          },
+          {
+            path: "diposit",
+            element: <Diposit />,
+          },
+          {
+            path: "support",
+            element: <Support />,
+          },
+        ],
+      },
+      {
+        path: "admindashboad/",
+        element: (
+          <AdminProtectedRoute>
+            <DashboadLayoutAdmin />
+          </AdminProtectedRoute>
+        ),
+        children: [
+          {
+            path: "",
+            element: <AdminDashboad />,
           },
           {
             path: "editprofile",

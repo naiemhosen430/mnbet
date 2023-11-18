@@ -34,7 +34,7 @@ export default function Withdraw() {
               Write your accout number
             </label>
             <input
-              className="block p-2 px-4 bg-black rounded-md text-lg w-full text-white"
+              className="block p-2 px-4 bg-black rounded-md text-lg w-full"
               type="text"
               id="number"
               placeholder="01xxxxxxxxx"
@@ -45,7 +45,7 @@ export default function Withdraw() {
               Write your ammount
             </label>
             <input
-              className="block p-2 px-4 bg-black rounded-md text-lg w-full text-white"
+              className="block p-2 px-4 bg-black rounded-md text-lg w-full"
               type="number"
               id="ammount"
               placeholder="0"
