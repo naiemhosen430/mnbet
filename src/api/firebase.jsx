@@ -27,6 +27,7 @@ export const gooogleSignUpHundler = () => {
     .then((data) => {
       localStorage.setItem("accesstoken", data.user.accessToken);
       localStorage.setItem("userid", data.user.uid);
+      localStorage.setItem("role", data.user.role);
       const user = {
         name: data.user.displayName,
         _id: data.user.uid,

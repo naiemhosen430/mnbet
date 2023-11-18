@@ -14,6 +14,7 @@ import Support from "../Pages/Dashboad/Pages/Support";
 import AdminProtectedRoute from "../Components/AdminProtectedRoute";
 import DashboadLayoutAdmin from "../Pages/AdminDashboad/Layout/DashboadLayoutAdmin";
 import AdminDashboad from "../Pages/AdminDashboad/AdminDashboad";
+import UserProtectedRoute from "../Components/UserProtectedRoute";
 
 export const router = createBrowserRouter([
   {
@@ -40,7 +41,9 @@ export const router = createBrowserRouter([
         path: "dashboad/",
         element: (
           <ProtectedRoutes>
-            <DashboadLayout />
+            <UserProtectedRoute>
+              <DashboadLayout />
+            </UserProtectedRoute>
           </ProtectedRoutes>
         ),
         children: [
@@ -69,9 +72,11 @@ export const router = createBrowserRouter([
       {
         path: "admindashboad/",
         element: (
-          <AdminProtectedRoute>
-            <DashboadLayoutAdmin />
-          </AdminProtectedRoute>
+          <ProtectedRoutes>
+            <AdminProtectedRoute>
+              <DashboadLayoutAdmin />
+            </AdminProtectedRoute>
+          </ProtectedRoutes>
         ),
         children: [
           {
