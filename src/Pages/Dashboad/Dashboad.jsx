@@ -3,7 +3,7 @@ import MenuBar from "./Components/Shared/MenuBar";
 export default function Dashboad() {
   return (
     <>
-      <div className="flex justify-center">
+      <div className="lg:flex lg:justify-center">
         <MenuBar />
         <div className="lg:w-9/12 h-screen backdrop-blur-md lg:p-5">
           <div className="lg:p-5 ">

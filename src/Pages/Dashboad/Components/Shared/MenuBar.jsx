@@ -38,7 +38,7 @@ export default function MenuBar() {
   }, [user]);
   return (
     <>
-      <div className="lg:w-3/12 p-5 pb-0 bg-black h-screen space-y-5">
+      <div className="lg:w-3/12 p-5 pb-0 bg-black lg:h-screen space-y-5">
         <div className="p-2 flex items-center justify-center space-x-4">
           <h1 className="text-xl font-bold text-white">{myInfo.name}</h1>
           <img
