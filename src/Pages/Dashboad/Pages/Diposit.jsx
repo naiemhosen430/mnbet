@@ -18,9 +18,13 @@ export default function Diposit() {
           </div>
         </div>
       </div>
-      <div className="w-12/12 lg:w-5/12 m-auto lg:mt-10 md:w-8/12 p-5 rounded-md bg-slate-900">
+      <div className="w-12/12 lg:w-5/12 m-auto md:w-8/12 p-5 rounded-md bg-slate-900">
         <div className="p-2 text-white font-bold text-xl lg:text-3xl text-center">
           Your current balance is 0 taka
+        </div>
+        <div className="p-5 text-white font-bold bg-slate-800 text-sm lg:text-lg text-center">
+          Send your money to our official number and send us your transaction id
+          and sended account number
         </div>
         {/* numbers */}
         <div className="mt-2">
@@ -36,7 +40,7 @@ export default function Diposit() {
         </div>
         <div className="mt-2">
           <h1 className="text-yellow-500 p-2 text-center lG:text-xl text-lg">
-            Our Bkash Account
+            Our Nagad Account
           </h1>
           <h1 className="text-white font-bold-500 text-center lG:text-2xl text-lg">
             01920679575
@@ -66,7 +70,7 @@ export default function Diposit() {
               className="block p-2 px-4 bg-black rounded-md text-lg w-full"
               type="text"
               id="number"
-              placeholder="01xxxxxxxxx"
+              placeholder="jhdccjsdDCdc45"
             />
           </div>
           <div className="p-4">
