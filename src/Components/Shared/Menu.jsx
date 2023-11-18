@@ -6,12 +6,14 @@ import { Link } from "react-router-dom";
 import { useUserAuth } from "../../Context/UseAuthContext";
 import { signOut } from "firebase/auth";
 import { auth } from "../../api/firebase";
+import { getMe } from "../../api/firebaseaction/getMe";
 
 export default function Menu() {
   const { user } = useUserAuth();
   const [showLogres, setshowLogres] = useState(false);
   const [myInfo, setMyInfo] = useState({
     name: "no name",
+    balance: 0.0,
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGQUKnJyenabp9WJBm3UmgQGPdYrPDgCdQ3HYHH0VQZ1J6Pcd00N2AySxJfxitS7SL8nU&usqp=CAU",
   });
@@ -26,18 +28,6 @@ export default function Menu() {
       setshowLogres(false);
     }
   }, [accessinfo]);
-
-  useEffect(() => {
-    if (user) {
-      setMyInfo((prevData) => {
-        return {
-          ...prevData,
-          name: user.displayName,
-          image: user.photoURL,
-        };
-      });
-    }
-  }, [user]);
 
   const [menuBox, setMenuBox] = useState(false);
   useEffect(() => {
@@ -62,6 +52,33 @@ export default function Menu() {
     signOutHundler();
     toggleMenuBox();
   };
+
+  // firebase query
+  useEffect(() => {
+    async function fatchData() {
+      if (user) {
+        try {
+          const data = await getMe(user.uid);
+          if (data) {
+            setMyInfo((prevData) => {
+              return {
+                ...prevData,
+                name: data.name,
+                balance: data.balance,
+                image: data.profilepic,
+              };
+            });
+          } else {
+            console.log({ data });
+            console.log("hm no data");
+          }
+        } catch (error) {
+          console.error(error);
+        }
+      }
+    }
+    fatchData();
+  }, [user]);
 
   return (
     <>
@@ -123,16 +140,10 @@ export default function Menu() {
           {showLogres && (
             <>
               <Link
-                className="py-2 hidden px-4 lg:block w-6/12 rounded-md shadow-md hover:bg-slate-700 bg-slate-800 text-white font-bold"
-                to={"/login"}
-              >
-                Login
-              </Link>
-              <Link
                 className="py-2 hidden px-4 lg:block w-6/12 rounded-md shadow-md hover:bg-slate-700 bg-slate-700 text-white font-bold"
                 to={"/register"}
               >
-                Register
+                Join
               </Link>
             </>
           )}
@@ -171,7 +182,7 @@ export default function Menu() {
               <div className="p-2 flex items-center justify-center space-x-4">
                 <div className="text-center">
                   <h1 className="text-2xl p-2 font-bold text-white">
-                    0.0 taka
+                    {myInfo.balance} tk
                   </h1>
                 </div>
                 <h1 className="text-xl font-bold text-white">{myInfo.name}</h1>
@@ -242,7 +253,7 @@ export default function Menu() {
                   className="py-2 px-4 lg:block w-6/12 rounded-md shadow-md hover:bg-slate-700 bg-slate-800 text-white font-bold"
                   to={"/register"}
                 >
-                  Register
+                  Join
                 </Link>
               </>
             )}

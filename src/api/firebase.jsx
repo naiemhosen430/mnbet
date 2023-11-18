@@ -1,5 +1,8 @@
 import { initializeApp } from "firebase/app";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
+import { getDatabase, ref, set } from "firebase/database";
+import { createUser } from "./firebaseaction/createUser";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAFsy5g-7NBgQ02als4W4NhllhVZdFtk9I",
@@ -13,6 +16,8 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+export const dbstore = getFirestore(app);
+export const dbbase = getDatabase(app);
 export const auth = getAuth(app);
 export default app;
 
@@ -22,6 +27,25 @@ export const gooogleSignUpHundler = () => {
     .then((data) => {
       localStorage.setItem("accesstoken", data.user.accessToken);
       localStorage.setItem("userid", data.user.uid);
+      const user = {
+        name: data.user.displayName,
+        _id: data.user.uid,
+        balance: 0.0,
+        lost: 0.0,
+        todaylost: 0.0,
+        win: 0.0,
+        todaywin: 0.0,
+        profilepic: data.user.photoURL,
+        playedgame: ["placeholder"],
+        playinggame: ["placeholder"],
+        withdrawed: ["placeholder"],
+        withdrawpending: ["placeholder"],
+        deposited: ["placeholder"],
+        depositpending: ["placeholder"],
+        withdrawphones: ["placeholder"],
+      };
+
+      createUser(user);
     })
     .catch((error) => {
       console.log(error);
