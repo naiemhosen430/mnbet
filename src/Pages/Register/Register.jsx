@@ -2,9 +2,10 @@ import { FaGoogle } from "react-icons/fa";
 import { gooogleSignUpHundler } from "../../api/firebase";
 import { useUserAuth } from "../../Context/UseAuthContext";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Register() {
+  const navigate = useNavigate();
   const [alert, setAlert] = useState(false);
   const [UserInfo, setUserInfo] = useState({
     email: "",
@@ -30,6 +31,7 @@ export default function Register() {
   const signupWithGoogleHandler = () => {
     try {
       gooogleSignUpHundler();
+      navigate("/");
       setAlert(true);
     } catch (error) {
       console.error("Error signing up with Google:", error);

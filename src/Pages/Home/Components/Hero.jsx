@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import BattingBox from "../../../Components/Box/BattingBox";
 
 export default function Hero() {
@@ -8,7 +9,7 @@ export default function Hero() {
           <div className="flex justify-center items-center">
             <div className="w-4/12">
               <img
-                className="lg:w-40 w-20 lg:h-60 h-20 block m-auto"
+                className="lg:w-40 w-20 lg:h-50 h-20 block m-auto"
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRupAZSlEcehQSIxhIWiwVLwkkfokFmutoTqbX-Hmxxev2H25uTGbvM-06PacyaCmrmFHA&usqp=CAU"
                 alt=""
               />
@@ -20,12 +21,20 @@ export default function Hero() {
             </div>
             <div className="w-4/12">
               <img
-                className="lg:w-40 w-20 lg:h-60 h-20 block m-auto"
+                className="lg:w-40 w-20 lg:h-50 h-20 block m-auto"
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStE8Nxq4ula9yfuY_qQAuksgN2jPrjj5xRZbrLHZpaGxlkToP_5525JKdH9KeGHM1CllM&usqp=CAU"
                 alt=""
               />
             </div>
           </div>
+        </div>
+        <div className="text-center p-5">
+          <Link
+            className="block p-5 rounded-lg bg-black text-white border-dotted border-4 lg:text-2xl text-lg shadow-2xl font-bold m-auto lg:w-5/12 w-10/12"
+            to={"/dashboad/makechalange"}
+          >
+            Make your chalange
+          </Link>
         </div>
         <BattingBox />
       </div>

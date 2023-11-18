@@ -17,6 +17,7 @@ import AdminDashboad from "../Pages/AdminDashboad/AdminDashboad";
 import UserProtectedRoute from "../Components/UserProtectedRoute";
 import AdminDiposit from "../Pages/AdminDashboad/Pages/AdminDiposit";
 import AdminWithdraw from "../Pages/AdminDashboad/Pages/AdminWithdraw";
+import MakeChalange from "../Pages/Dashboad/Pages/MakeChalange";
 
 export const router = createBrowserRouter([
   {
@@ -56,6 +57,10 @@ export const router = createBrowserRouter([
           {
             path: "editprofile",
             element: <EditProfile />,
+          },
+          {
+            path: "makechalange",
+            element: <MakeChalange />,
           },
           {
             path: "withdraw",
