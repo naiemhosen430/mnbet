@@ -182,7 +182,7 @@ export default function Menu() {
               <div className="p-2 flex items-center justify-center space-x-4">
                 <div className="text-center">
                   <h1 className="text-2xl p-2 font-bold text-white">
-                    {myInfo.balance} tk
+                    {myInfo.balance}
                   </h1>
                 </div>
                 <h1 className="text-xl font-bold text-white">{myInfo.name}</h1>
