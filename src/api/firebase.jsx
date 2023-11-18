@@ -35,6 +35,7 @@ export const gooogleSignUpHundler = () => {
         todaylost: 0.0,
         win: 0.0,
         todaywin: 0.0,
+        role: "user",
         profilepic: data.user.photoURL,
         playedgame: ["placeholder"],
         playinggame: ["placeholder"],
