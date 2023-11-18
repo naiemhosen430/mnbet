@@ -8,7 +8,7 @@ import DashboadLayout from "../Pages/Dashboad/Layout/DashboadLayout";
 import ProtectedRoutes from "../Components/ProtectedRoutes";
 import LogoutToutes from "../Components/LogoutToutes";
 import EditProfile from "../Pages/Dashboad/Pages/EditProfile";
-import Withdraw from "../Pages/Dashboad/Pages/withdraw";
+import Withdraw from "../Pages/Dashboad/Pages/Withdraw";
 import Diposit from "../Pages/Dashboad/Pages/Diposit";
 import Support from "../Pages/Dashboad/Pages/Support";
 
