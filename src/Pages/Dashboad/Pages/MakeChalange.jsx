@@ -1,14 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { createCahlange } from "../../../api/firebaseaction/createCahlange";
 import { useNavigate } from "react-router-dom";
+import getAllGames from "../../../api/firebaseaction/getAllGames";
 
 export default function MakeChallenge() {
   const navigate = useNavigate();
+  // call api foe games
+  const [gamesArray, serGamesArray] = useState([]);
+
   const [selectedGameOption, setSelectedGameOption] = useState({
     game: "",
     statement: "",
     bet: 0,
     userid: "",
+    timeendwill: "",
+    gameendwill: "",
     perticipators: ["placeholder"],
   });
   const [team, setTeam] = useState([]);
@@ -26,6 +32,21 @@ export default function MakeChallenge() {
       [name]: value,
     }));
   };
+  // call api
+  useEffect(() => {
+    getAllGames()
+      .then((data) => {
+        // serGamesArray(data.startData);
+        // setSelectedGameOption((predata) => ({
+        //   ...predata,
+        //   timeendwill: data.startData + data.startTime,
+        //   gameendwill: data.endData + data.endTime,
+        // }));
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }, []);
 
   const handleGameChangeForMainTeam = (e) => {
     const { name, value } = e.target;
@@ -79,6 +100,7 @@ export default function MakeChallenge() {
       console.log("somethig wents wrong");
     }
   };
+  console.log({ gamesArray });
   return (
     <>
       <div className="p-4">
@@ -102,7 +124,11 @@ export default function MakeChallenge() {
             <option value="" disabled>
               Select
             </option>
-            <option value="Ban VS India">Ban VS India</option>
+            {gamesArray.map((gm) => (
+              <option key={gm.id} value={`${gm.teamone} VS ${gm.teamtwo}`}>
+                {gm.teamone} VS {gm.teamtwo}
+              </option>
+            ))}
           </select>
         </div>
 
@@ -115,6 +141,9 @@ export default function MakeChallenge() {
               onChange={handleGameChangeForMainTeam}
               value={singleTeam.mainTeam}
             >
+              <option value="" disabled>
+                Select
+              </option>
               {team.map((item) => (
                 <option key={item} value={item}>
                   {item}
