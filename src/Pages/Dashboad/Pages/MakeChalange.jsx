@@ -9,7 +9,7 @@ export default function MakeChallenge() {
     statement: "",
     bet: 0,
     userid: "",
-    perticipators: [],
+    perticipators: ["placeholder"],
   });
   const [team, setTeam] = useState([]);
   const [singleTeam, setSingleTeam] = useState({
