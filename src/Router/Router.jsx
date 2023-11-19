@@ -18,6 +18,7 @@ import UserProtectedRoute from "../Components/UserProtectedRoute";
 import AdminDiposit from "../Pages/AdminDashboad/Pages/AdminDiposit";
 import AdminWithdraw from "../Pages/AdminDashboad/Pages/AdminWithdraw";
 import MakeChalange from "../Pages/Dashboad/Pages/MakeChalange";
+import Addgame from "../Pages/AdminDashboad/Pages/Addgame";
 
 export const router = createBrowserRouter([
   {
@@ -93,6 +94,10 @@ export const router = createBrowserRouter([
           {
             path: "editprofile",
             element: <EditProfile />,
+          },
+          {
+            path: "addgame",
+            element: <Addgame />,
           },
           {
             path: "withdraw",

@@ -62,6 +62,12 @@ export default function MenuBar() {
         </Link>
         <Link
           className="block p-2 rounded-xl border-b-2 border-yellow-900 hover:bg-gray-900 text-white text-xl font-bold"
+          to={"/admindashboad/addgame"}
+        >
+          Add Game
+        </Link>
+        <Link
+          className="block p-2 rounded-xl border-b-2 border-yellow-900 hover:bg-gray-900 text-white text-xl font-bold"
           to={"/admindashboad/editprofile"}
         >
           Edit Profile Info
