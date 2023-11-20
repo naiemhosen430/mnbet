@@ -1,4 +1,9 @@
 import { Link } from "react-router-dom";
+import { MdLiveTv } from "react-icons/md";
+import { MdSportsSoccer } from "react-icons/md";
+import { MdOutlineSportsEsports } from "react-icons/md";
+import { AiOutlineTeam } from "react-icons/ai";
+import { GiBabyfootPlayers } from "react-icons/gi";
 
 export default function Hero() {
   return (
@@ -27,14 +32,38 @@ export default function Hero() {
             </div>
           </div>
         </div>
-        <div className="text-center p-5">
+
+        <div className="flex items-center space-x-4 justify-center w-12/12 bg-slate-800 lg:w-6/12 m-auto">
+          <div className="text-white p-2 rounded-md text-center">
+            <MdLiveTv className="inline-block" />
+            <h6 className="block text-xs">Live</h6>
+          </div>
+          <div className="text-white p-2 rounded-md text-center">
+            <MdSportsSoccer className="inline-block" />
+            <h6 className="block text-xs">Sports</h6>
+          </div>
+          <div className="text-white p-2 rounded-md text-center">
+            <MdOutlineSportsEsports className="inline-block" />
+            <h6 className="block text-xs">Games</h6>
+          </div>
+          <div className="text-white p-2 rounded-md text-center">
+            <AiOutlineTeam className="inline-block" />
+            <h6 className="block text-xs">Team</h6>
+          </div>
+          <div className="text-white p-2 rounded-md text-center">
+            <GiBabyfootPlayers className="inline-block" />
+            <h6 className="block text-xs">Players</h6>
+          </div>
+        </div>
+
+        {/* <div className="text-center p-5">
           <Link
             className="block p-5 rounded-lg bg-black text-white border-dotted border-4 lg:text-2xl text-lg shadow-2xl font-bold m-auto lg:w-5/12 w-10/12"
             to={"/dashboad/makechalange"}
           >
             Make your chalange
           </Link>
-        </div>
+        </div> */}
       </div>
     </>
   );
