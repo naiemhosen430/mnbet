@@ -1,0 +1,32 @@
+import { useState, useEffect } from "react";
+import { onValue, ref } from "firebase/database";
+import { dbbase } from "../firebase";
+
+const GetOneGameById = (id) => {
+  const [singleGame, setSingleGame] = useState(null);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const gameRef = ref(dbbase, `games/${id}`);
+
+    const handleDataChange = (snapshot) => {
+      const data = snapshot.val();
+      setSingleGame(data);
+    };
+
+    const handleError = (error) => {
+      console.error("Error reading data:", error);
+      setError(error);
+    };
+
+    const unsubscribe = onValue(gameRef, handleDataChange, handleError);
+
+    return () => {
+      unsubscribe();
+    };
+  }, [id]);
+  console.log({ singleGame });
+  return { singleGame, error };
+};
+
+export default GetOneGameById;

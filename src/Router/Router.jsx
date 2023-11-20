@@ -19,6 +19,7 @@ import AdminDiposit from "../Pages/AdminDashboad/Pages/AdminDiposit";
 import AdminWithdraw from "../Pages/AdminDashboad/Pages/AdminWithdraw";
 import MakeChalange from "../Pages/Dashboad/Pages/MakeChalange";
 import Addgame from "../Pages/AdminDashboad/Pages/Addgame";
+import GamesDetails from "../Pages/Dashboad/Pages/GamesDetails";
 
 export const router = createBrowserRouter([
   {
@@ -58,6 +59,10 @@ export const router = createBrowserRouter([
           {
             path: "editprofile",
             element: <EditProfile />,
+          },
+          {
+            path: "gamesdetails/:id",
+            element: <GamesDetails />,
           },
           {
             path: "makechalange",
