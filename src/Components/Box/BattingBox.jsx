@@ -25,7 +25,7 @@ export default function BattingBox() {
               <h1 className="w-8/12">
                 {i.teamone} vs {i.teamtwo}
               </h1>
-              <button className="block p-1 w-2/12 bg-slate-500 rounded-2xl text-slate-900 ">
+              <button className="block text-white w-2/12 bg-slate-500 rounded-2xl">
                 Play
               </button>
             </div>
@@ -35,3 +35,4 @@ export default function BattingBox() {
     </>
   );
 }
+("");
